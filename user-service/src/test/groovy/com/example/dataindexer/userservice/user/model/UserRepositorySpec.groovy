@@ -7,8 +7,8 @@ import spock.lang.Specification
 import spock.lang.Stepwise
 
 @SpringBootTest
-@Transactional
 @Stepwise
+@Transactional
 class UserRepositorySpec extends Specification {
     @Autowired
     UserRepository userRepository
@@ -29,6 +29,7 @@ class UserRepositorySpec extends Specification {
         with(users.get(0)) {
             firstName == 'first name'
             lastName == 'last name'
+            addresses == null
         }
     }
 
