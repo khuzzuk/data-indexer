@@ -6,7 +6,7 @@
     <groupId>com.example.dataindexer</groupId>
     <artifactId>data-indexer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>data-indexer</name>
     <description>Description</description>
@@ -25,16 +25,11 @@
         <spock.version>1.2-groovy-2.5</spock.version>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
+    <modules>
+        <module>user-service</module>
+    </modules>
 
+    <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -51,6 +46,7 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -74,7 +70,6 @@
             <version>2.5.3</version>
             <type>pom</type>
         </dependency>
-
     </dependencies>
 
     <build>
