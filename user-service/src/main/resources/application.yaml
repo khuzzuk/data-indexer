@@ -1,3 +1,15 @@
 server:
   port: 8081
 
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    username: sa
+    url: jdbc:h2:mem:test
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+      format_sql: true
+      use_sql_comment: true
+    show-sql: true

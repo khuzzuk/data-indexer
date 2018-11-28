@@ -1,0 +1,7 @@
+CREATE SEQUENCE user_seq;
+
+CREATE TABLE user (
+  id BIGINT NOT NULL PRIMARY KEY,
+  first_name VARCHAR(255),
+  last_name VARCHAR(255)
+);

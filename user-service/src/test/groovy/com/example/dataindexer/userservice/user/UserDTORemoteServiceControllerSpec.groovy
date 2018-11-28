@@ -10,7 +10,7 @@ import spock.lang.Specification
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
 
 @SpringBootTest(webEnvironment = RANDOM_PORT, properties = ["indexer.property=my property"])
-class UserRemoteServiceControllerSpec extends Specification implements RestTest {
+class UserDTORemoteServiceControllerSpec extends Specification implements RestTest {
     @Autowired
     UserRemoteServiceController userRemoteServiceController
 
@@ -29,7 +29,7 @@ class UserRemoteServiceControllerSpec extends Specification implements RestTest 
 
     def "test user read"() {
         when: "read user from service"
-        def user = restTemplate.getForObject(getUrlFrom("user/read", localHostPort), User)
+        def user = restTemplate.getForObject(getUrlFrom("user/read", localHostPort), UserDTO)
 
         then: "check if user is present"
         with(user) {

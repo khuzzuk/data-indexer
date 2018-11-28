@@ -17,24 +17,24 @@ public class UserRemoteServiceController {
     String myProperty;
 
     @GetMapping("read")
-    public User getUser(@RequestParam(name = "id", required = false) Optional<Long> id) {
-        User user = new User();
-        user.setFirstName("First name " + id.orElse(0L));
-        user.setLastName("Last name");
-        return user;
+    public UserDTO getUser(@RequestParam(name = "id", required = false) Optional<Long> id) {
+        UserDTO userDTO = new UserDTO();
+        userDTO.setFirstName("First name " + id.orElse(0L));
+        userDTO.setLastName("Last name");
+        return userDTO;
     }
 
     @PostMapping("create")
-    public User createUser(@RequestBody @Valid User user) {
-        System.out.println(user);
-        return user;
+    public UserDTO createUser(@RequestBody @Valid UserDTO userDTO) {
+        System.out.println(userDTO);
+        return userDTO;
     }
 
     @org.springframework.web.bind.annotation.GetMapping(
             path = "createOrUpdate",
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public User createOrUpdate(@RequestParam(name = "user") User user, HttpServletRequest request) {
+    public UserDTO createOrUpdate(@RequestParam(name = "userDTO") UserDTO userDTO, HttpServletRequest request) {
         log.warn(request.getHeader("Content-Type"));
-        return user;
+        return userDTO;
     }
 }
