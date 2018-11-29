@@ -1,6 +1,6 @@
 package com.example.dataindexer.frontend.user;
 
-import com.example.dataindexer.frontend.assembler.Assembler;
+import com.example.dataindexer.commons.assembler.Assembler;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 

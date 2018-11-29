@@ -1,4 +1,4 @@
-package com.example.dataindexer.frontend.assembler;
+package com.example.dataindexer.commons.assembler;
 
 import java.util.Collection;
 import java.util.Set;

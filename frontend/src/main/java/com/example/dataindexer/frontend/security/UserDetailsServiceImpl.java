@@ -1,6 +1,6 @@
 package com.example.dataindexer.frontend.security;
 
-import com.example.dataindexer.frontend.assembler.Assembler;
+import com.example.dataindexer.commons.assembler.Assembler;
 import com.example.dataindexer.frontend.user.User;
 import com.example.dataindexer.frontend.user.UserRemoteService;
 import lombok.AllArgsConstructor;

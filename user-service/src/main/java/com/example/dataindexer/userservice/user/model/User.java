@@ -10,6 +10,7 @@ import java.util.Set;
 
 @Data
 @Entity
+@Table(name = "application_user")
 public class User {
     @SequenceGenerator(name = "user_id_gen", sequenceName = "user_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_gen")
@@ -18,6 +19,7 @@ public class User {
     private String username;
     private String password;
     @ManyToMany
+    @JoinTable(name = "user_roles")
     private @NotEmpty Set<Role> roles;
 
     private String firstName;
