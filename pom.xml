@@ -26,7 +26,8 @@
     </properties>
 
     <modules>
-        <module>userDTO-service</module>
+        <module>user-service</module>
+        <module>frontend</module>
     </modules>
 
     <dependencies>

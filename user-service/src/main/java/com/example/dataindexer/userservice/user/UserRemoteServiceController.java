@@ -1,6 +1,7 @@
 package com.example.dataindexer.userservice.user;
 
 import com.example.dataindexer.userservice.assembler.Assembler;
+import com.example.dataindexer.userservice.user.model.RoleRepository;
 import com.example.dataindexer.userservice.user.model.User;
 import com.example.dataindexer.userservice.user.model.UserRepository;
 import lombok.AllArgsConstructor;
@@ -12,6 +13,7 @@ import javax.persistence.NoResultException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Optional;
+import java.util.Set;
 
 @AllArgsConstructor
 @RestController
@@ -19,7 +21,9 @@ import java.util.Optional;
 @Slf4j
 public class UserRemoteServiceController {
     private Assembler<User, UserDTO> userDTOAssembler;
+    private Assembler<UserDTO, User> userAssembler;
     private UserRepository userRepository;
+    private RoleRepository roleRepository;
 
     @GetMapping("read")
     public UserDTO getUser(@RequestParam(name = "id", required = false) Optional<Long> id) {
@@ -27,10 +31,18 @@ public class UserRemoteServiceController {
         return userDTOAssembler.assemble(user);
     }
 
+    @GetMapping("getUserByName/{username}")
+    public UserDTO getUserByName(@PathVariable(name = "username") String username) {
+        User user = userRepository.findByUsername(username).get();
+        return userDTOAssembler.assemble(user);
+    }
+
     @PostMapping("create")
     public UserDTO createUser(@RequestBody @Valid UserDTO userDTO) {
-        System.out.println(userDTO);
-        return userDTO;
+        User user = userAssembler.assemble(userDTO);
+        user.setRoles(Set.of(roleRepository.findByName("ROLE_USER").get()));
+        User persistedUser = userRepository.save(user);
+        return userDTOAssembler.assemble(persistedUser);
     }
 
     @org.springframework.web.bind.annotation.GetMapping(

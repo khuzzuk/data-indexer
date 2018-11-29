@@ -4,7 +4,9 @@ import com.example.dataindexer.userservice.contact.Address;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -13,6 +15,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_gen")
     @Id
     private Long id;
+    private String username;
+    private String password;
+    @ManyToMany
+    private @NotEmpty Set<Role> roles;
+
     private String firstName;
     private String lastName;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
