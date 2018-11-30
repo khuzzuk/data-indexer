@@ -3,6 +3,7 @@ package com.example.dataindexer.datasearcher.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 import java.util.Set;
 
@@ -16,7 +17,7 @@ public class DoorsDocument {
     private String documentNumber;
     private String documentVersion;
     private String documentType;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "created_by")
     private Person creator;
     @ManyToMany
@@ -24,7 +25,12 @@ public class DoorsDocument {
             joinColumns = @JoinColumn(name = "doors_document_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<Person> involved;
-    private Timestamp releasedOn;
-    @ManyToMany
+    private @NotNull Timestamp releasedOn;
+    @ManyToMany(fetch = FetchType.LAZY)
     private Set<SapDocument> relatedDocuments;
+
+    void addRelatedDocument(SapDocument sapDocument) {
+        relatedDocuments.add(sapDocument);
+        sapDocument.getRelatedDocument().add(this);
+    }
 }

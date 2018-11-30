@@ -1,3 +1,8 @@
 dataindexer:
   userservice:
     url: http://localhost:8081/user/
+  data-searcher:
+    document:
+      url: http://localhost:8082/document/
+    person:
+      url: http://localhost:8082/person/
