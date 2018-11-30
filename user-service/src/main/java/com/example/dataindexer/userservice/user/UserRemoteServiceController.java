@@ -1,6 +1,6 @@
 package com.example.dataindexer.userservice.user;
 
-import com.example.dataindexer.userservice.assembler.Assembler;
+import com.example.dataindexer.commons.assembler.Assembler;
 import com.example.dataindexer.userservice.user.model.RoleRepository;
 import com.example.dataindexer.userservice.user.model.User;
 import com.example.dataindexer.userservice.user.model.UserRepository;

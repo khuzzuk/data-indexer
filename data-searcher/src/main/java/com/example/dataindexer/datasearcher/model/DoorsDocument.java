@@ -18,12 +18,12 @@ public class DoorsDocument {
     private String documentType;
     @ManyToOne
     @JoinColumn(name = "created_by")
-    private User creator;
+    private Person creator;
     @ManyToMany
     @JoinTable(name = "door_document_editors",
             joinColumns = @JoinColumn(name = "doors_document_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
-    private Set<User> involved;
+    private Set<Person> involved;
     private Timestamp releasedOn;
     @ManyToMany
     private Set<SapDocument> relatedDocuments;

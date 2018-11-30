@@ -1,6 +1,6 @@
 package com.example.dataindexer.userservice.user;
 
-import com.example.dataindexer.userservice.assembler.Assembler;
+import com.example.dataindexer.commons.assembler.Assembler;
 import com.example.dataindexer.userservice.user.model.Role;
 import com.example.dataindexer.userservice.user.model.User;
 import org.springframework.beans.factory.FactoryBean;

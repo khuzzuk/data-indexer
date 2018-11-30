@@ -1,6 +1,6 @@
 package com.example.dataindexer.userservice.user;
 
-import com.example.dataindexer.userservice.assembler.Assembler;
+import com.example.dataindexer.commons.assembler.Assembler;
 import com.example.dataindexer.userservice.user.model.Role;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.stereotype.Component;

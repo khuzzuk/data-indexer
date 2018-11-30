@@ -16,12 +16,12 @@ public class SapDocument {
     private String documentNumber;
     private String documentVersion;
     private String documentType;
-    private User creator;
+    private Person creator;
     @ManyToMany
     @JoinTable(name = "sap_document_editors",
             joinColumns = @JoinColumn(name = "sap_document_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
-    private Set<User> involved;
+    private Set<Person> involved;
     private Timestamp releasedOn;
     @ManyToMany(mappedBy = "relatedDocuments")
     private Set<DoorsDocument> relatedDocument;
