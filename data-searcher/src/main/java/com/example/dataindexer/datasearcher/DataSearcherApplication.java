@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.Set;
 
 @SpringBootApplication
 public class DataSearcherApplication {
@@ -34,10 +35,15 @@ public class DataSearcherApplication {
         document.setDocumentNumber(String.valueOf(counter++));
         document.setDocumentType("BASIC_TYPE");
         document.setDocumentVersion(String.valueOf(counter++));
+        document.setCreator(createPerson());
+        document.setReleasedOn(Timestamp.from(Instant.now()));
+        document.setInvolved(Set.of(createPerson(), createPerson()));
+        return document;
+    }
+
+    private static Person createPerson() {
         Person person = new Person();
         person.setUserId(String.valueOf(counter++));
-        document.setCreator(person);
-        document.setReleasedOn(Timestamp.from(Instant.now()));
-        return document;
+        return person;
     }
 }

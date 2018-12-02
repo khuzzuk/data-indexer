@@ -20,7 +20,7 @@ public class DoorsDocument {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "created_by")
     private Person creator;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "door_document_editors",
             joinColumns = @JoinColumn(name = "doors_document_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))

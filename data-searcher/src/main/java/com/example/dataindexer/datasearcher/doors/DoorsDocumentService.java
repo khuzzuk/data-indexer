@@ -29,9 +29,9 @@ public class DoorsDocumentService {
 
     public PersonInvolvedView getPersonInvolved(String documentNumber) {
         Query query = entityManager.createQuery(
-                "SELECT new com.example.dataindexer.datasearcher.api.PersonInvolvedView(dd.documentNumber, COUNT(dd.involved)) " +
+                "SELECT new com.example.dataindexer.datasearcher.api.PersonInvolvedView(dd.documentNumber, COUNT(i)) " +
                 "FROM DoorsDocument dd " +
-                "   JOIN dd.involved " +
+                "   JOIN dd.involved i " +
                 "WHERE dd.documentNumber = :docNum " +
                         "GROUP BY dd.documentNumber");
         query.setParameter("docNum", documentNumber);
